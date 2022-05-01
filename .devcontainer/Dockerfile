@@ -17,6 +17,15 @@ RUN if ! cat /etc/group | grep -e "^pip-global:" > /dev/null 2>&1; then groupadd
 ARG NODE_VERSION="none"
 RUN if [ "${NODE_VERSION}" != "none" ]; then su vscode -c "umask 0002 && . /usr/local/share/nvm/nvm.sh && nvm install ${NODE_VERSION} 2>&1"; fi
 
+WORKDIR /usr/src/app
+
+RUN pip install pyOpenSSL
+RUN pip install httplib2
+RUN pip install uritemplate
+RUN pip install pytest-shutil
+RUN sudo -s apt-get install python3-venv python3 -m venv analytics-quickstart source analytics-quickstart/bin/activate 
+RUN pip install --upgrade google-api-python-client pip install --upgrade oauth2client
+
 # [Optional] If your pip requirements rarely change, uncomment this section to add them to the image.
 # COPY requirements.txt /tmp/pip-tmp/
 # RUN pip3 --disable-pip-version-check --no-cache-dir install -r /tmp/pip-tmp/requirements.txt \
