@@ -23,7 +23,7 @@ RUN pip install pyOpenSSL
 RUN pip install httplib2
 RUN pip install uritemplate
 RUN pip install pytest-shutil
-RUN sudo -s apt-get install python3-venv python3 -m venv analytics-quickstart source analytics-quickstart/bin/activate 
+# RUN apt-get install python3-venv python3 -m venv analytics-quickstart source analytics-quickstart/bin/activate 
 RUN pip install --upgrade google-api-python-client pip install --upgrade oauth2client
 
 # [Optional] If your pip requirements rarely change, uncomment this section to add them to the image.
